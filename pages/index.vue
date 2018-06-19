@@ -1,38 +1,50 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
+<section class="container">
+  <div>
+    <app-logo/>
+    <h1 class="title">
         gff
       </h1>
-      <h2 class="subtitle">
+    <h2 class="subtitle">
         Nuxt.js project
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+    <div class="links">
+      <a href="https://nuxtjs.org/"
+         target="_blank"
+         class="button--green">Documentation</a>
+      <a href="https://github.com/nuxt/nuxt.js"
+         target="_blank"
+         class="button--grey">GitHub</a>
     </div>
-  </section>
+  </div>
+</section>
+
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import AppLogo from '~/components/AppLogo.vue';
 
 export default {
   components: {
     AppLogo
   }
 }
+
 </script>
 
-<style>
+<style lang="scss">
+$color1:#6cb4b8;
+$color2:#bedce3;
+$color3:#f3f3f6;
+$color4:#e3dcd5;
+$color5:#da7015;
+body {
+  background: $color4;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -42,7 +54,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* 1 */
   display: block;
   font-weight: 300;
   font-size: 100px;
