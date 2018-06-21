@@ -20,6 +20,7 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: ['~plugins/vuefire'],
   build: {
     /*
     ** Run ESLint on save
