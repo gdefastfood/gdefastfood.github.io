@@ -9,6 +9,24 @@
         Nuxt.js 
 
       </h2>
+    <googlemaps-map :center.sync="center"
+                    :zoom.sync="zoom"
+                    :options="mapOptions"
+                    @idle="onIdle"
+                    @click="onMapClick">
+      <!-- User Position -->
+      <googlemaps-user-position @update:position="setUserPosition" />
+      <googlemaps-marker v-for="marker of markers"
+                         :key="marker._id"
+                         :label="{
+      color: marker === currentmarker ? 'white' : 'black',
+      fontFamily: 'Material Icons',
+      fontSize: '20px',
+      text: 'star_rate',
+    }"
+                         :position="marker.position"
+                         @click="selectMarker(marker._id)" />
+    </googlemaps-map>
     <div class="links">
       <a href="https://nuxtjs.org/"
          target="_blank"
@@ -24,11 +42,34 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue';
+import { MapElement } from 'vue-googlemaps';
 
+// Those Vue props will update automatically
+// (Two-way binding with .sync modifier)
+const boundProps = [
+  'animation',
+  'clickable',
+  'cursor',
+  'draggable',
+// ...
+]
+
+// Events from Google Maps emitted as Vue events
+const redirectedEvents = [
+  'click',
+  'rightclick',
+  'dblclick',
+  'drag',
+// ...
+]
 export default {
   components: {
     AppLogo
-  }
+  },
+  mixins: [
+    // You need to use this mixin
+    MapElement
+  ]
 }
 
 </script>

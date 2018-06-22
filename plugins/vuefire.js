@@ -11,7 +11,9 @@ var config = {
     storageBucket: "gdefastfood-e297c.appspot.com",
     messagingSenderId: "829728943458"
   };
-  Firebase.initializeApp(config);
+  if (!Firebase.apps.length) {
+    Firebase.initializeApp(config);
+}
 
 
 Vue.use(VueFire)
