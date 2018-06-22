@@ -6,7 +6,8 @@
         gff
       </h1>
     <h2 class="subtitle">
-        Nuxt.js вфывфывфвфы
+        Nuxt.js 
+
       </h2>
     <div class="links">
       <a href="https://nuxtjs.org/"
