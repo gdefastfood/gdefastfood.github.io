@@ -23,16 +23,19 @@ export default {
   },
   mounted() {
     let maps = new Promise((resolve, reject) => {
-        let script = document.createElement('script')
-        script.onload = () => {
-          const map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -34.397, lng: 150.644},
-              zoom: 8
-          });        
-        }
-        script.async = true
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBLuqiV24hMwDnHOZX8qHvi_w3VjdVxfF0"
-        document.head.appendChild(script)
+       let script = document.createElement('script')
+       script.onload = () => {
+        const ymaps = global.ymaps;
+        ymaps.ready(() => {
+                    new ymaps.Map("map", {
+                        center: [55.76, 37.64],
+                        zoom: 12
+                    });
+                }); 
+       }
+       script.async = true
+       script.src = "//api-maps.yandex.ru/2.1/?lang=ru_RU"
+       document.head.appendChild(script)
       })
        
   },
