@@ -28,8 +28,7 @@ export default {
           const map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: -34.397, lng: 150.644},
               zoom: 8
-          });
-        
+          });        
         }
         script.async = true
         script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBLuqiV24hMwDnHOZX8qHvi_w3VjdVxfF0"
