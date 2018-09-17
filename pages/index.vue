@@ -1,39 +1,9 @@
 <template>
 <section class="container">
   <div>
-    <app-logo/>
-    <h1 class="title">
-        gff
-      </h1>
-    <h2 class="subtitle">
-        Nuxt.js 
-
-      </h2>
-    <googlemaps-map :center.sync="center"
-                    :zoom.sync="zoom"
-                    :options="mapOptions"
-                    @idle="onIdle"
-                    @click="onMapClick">
-      <!-- User Position -->
-      <googlemaps-user-position @update:position="setUserPosition" />
-      <googlemaps-marker v-for="marker of markers"
-                         :key="marker._id"
-                         :label="{
-      color: marker === currentmarker ? 'white' : 'black',
-      fontFamily: 'Material Icons',
-      fontSize: '20px',
-      text: 'star_rate',
-    }"
-                         :position="marker.position"
-                         @click="selectMarker(marker._id)" />
-    </googlemaps-map>
-    <div class="links">
-      <a href="https://nuxtjs.org/"
-         target="_blank"
-         class="button--green">Documentation</a>
-      <a href="https://github.com/nuxt/nuxt.js"
-         target="_blank"
-         class="button--grey">GitHub</a>
+    <div>
+        <div id="map" style="width: 600px; height: 400px"></div>
+        <h1>Карта</h1>
     </div>
   </div>
 </section>
@@ -41,35 +11,38 @@
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue';
-import { MapElement } from 'vue-googlemaps';
 
-// Those Vue props will update automatically
-// (Two-way binding with .sync modifier)
-const boundProps = [
-  'animation',
-  'clickable',
-  'cursor',
-  'draggable',
-// ...
-]
-
-// Events from Google Maps emitted as Vue events
-const redirectedEvents = [
-  'click',
-  'rightclick',
-  'dblclick',
-  'drag',
-// ...
-]
 export default {
-  components: {
-    AppLogo
+  data() {
+    return {
+      map: {},
+    }
+  },  
+  created() {
+
   },
-  mixins: [
-    // You need to use this mixin
-    MapElement
-  ]
+  mounted() {
+    let maps = new Promise((resolve, reject) => {
+        let script = document.createElement('script')
+        script.onload = () => {
+          const map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 8
+          });
+        
+        }
+        script.async = true
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBLuqiV24hMwDnHOZX8qHvi_w3VjdVxfF0"
+        document.head.appendChild(script)
+      })
+       
+  },
+  computed: {
+  },
+  components: {
+    
+  },
+   
 }
 
 </script>
