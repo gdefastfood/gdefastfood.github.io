@@ -20,7 +20,7 @@ module.exports = {
   /*
   ** Build configuration
   */
-  plugins: ['~plugins/vuefire','~plugins/vue-googlemaps'],
+  plugins: ['~plugins/vuefire'],
   build: {
     /*
     ** Run ESLint on save
